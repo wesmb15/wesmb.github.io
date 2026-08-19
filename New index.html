@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CloseCoach AI — V2</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand"><span class="logo">C</span> CloseCoach <b>AI</b></div>
+    <nav>
+      <button class="nav active" data-view="coach">Coach</button>
+      <button class="nav" data-view="history">History</button>
+      <button class="nav" data-view="dashboard">Team</button>
+      <button class="nav" data-view="billing">Billing</button>
+    </nav>
+    <div class="user"><span class="avatar">WL</span><span>Demo Rep</span></div>
+  </header>
+
+  <main class="shell">
+    <section id="coach" class="view active-view">
+      <div class="hero">
+        <div><p class="eyebrow">AI SALES COACH • V2</p><h1>Turn objections into <span>next moves.</span></h1>
+        <p>Tell CloseCoach what the customer said. Get a discovery question, response, buying signal, transition and close.</p></div>
+        <div class="mini-stat"><small>COACHING SCORE</small><strong>84</strong><span>/100</span><em>↑ 8% this week</em></div>
+      </div>
+      <div class="coach-grid">
+        <section class="panel">
+          <div class="panel-title"><h2>Customer statement</h2><button id="randomBtn">Random example</button></div>
+          <textarea id="input" placeholder='“I already have internet and I’m happy with it.”'></textarea>
+          <div class="chips">
+            <button data-example="I already have internet and I'm happy with it.">Already have internet</button>
+            <button data-example="Your price is too high.">Too expensive</button>
+            <button data-example="I need to think about it.">Need to think</button>
+            <button data-example="I don't need another bill.">Don't need it</button>
+          </div>
+          <button class="primary" id="coachBtn">Coach me <span>→</span></button>
+          <div class="api-note">Demo mode • AI backend hook is included in <code>README.md</code>.</div>
+        </section>
+        <section class="panel result">
+          <div id="empty" class="empty"><div>✦</div><h2>Your coaching will appear here</h2><p>Enter an objection to generate the next best move.</p></div>
+          <div id="output" class="hidden">
+            <div class="result-head"><div><small>AI COACHING</small><h2 id="title"></h2></div><span id="tag"></span></div>
+            <div class="hero-answer"><label>BEST NEXT QUESTION</label><p id="question"></p><button class="copy" data-id="question">Copy</button></div>
+            <div class="twocol">
+              <div class="card"><label>WHY IT WORKS</label><p id="why"></p></div>
+              <div class="card"><label>BUYING SIGNAL</label><p id="signal"></p></div>
+            </div>
+            <div class="card quote-card"><label>IF THEY ENGAGE</label><p id="transition"></p><button class="copy" data-id="transition">Copy</button></div>
+            <div class="card quote-card"><label>IF THEY PUSH BACK</label><p id="pushback"></p><button class="copy" data-id="pushback">Copy</button></div>
+            <div class="next"><b>Next objective</b><span id="objective"></span></div>
+            <button class="save" id="saveBtn">Save conversation</button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="history" class="view">
+      <div class="page-head"><div><p class="eyebrow">CONVERSATION HISTORY</p><h1>Your coaching library</h1></div><button class="primary small" data-view="coach">+ New coaching</button></div>
+      <div class="panel table"><div class="table-head"><span>Customer statement</span><span>Opportunity</span><span>Date</span><span>Score</span></div><div id="historyRows"></div></div>
+    </section>
+
+    <section id="dashboard" class="view">
+      <div class="page-head"><div><p class="eyebrow">MANAGER DASHBOARD</p><h1>Team opportunity report</h1></div><span class="pill">14 reps • Demo data</span></div>
+      <div class="metrics"><div><small>CONVERSATIONS</small><strong>1,247</strong><span>+18% this month</span></div><div><small>MISSED OPPORTUNITIES</small><strong>286</strong><span>23% of conversations</span></div><div><small>AVG. COACHING SCORE</small><strong>81</strong><span>+6 points</span></div><div><small>TOP OBJECTION</small><strong>24%</strong><span>Already have internet</span></div></div>
+      <div class="dash-grid"><div class="panel"><h2>Top missed opportunities</h2><div class="bars"><div><span>Existing provider</span><b style="width:78%"></b><em>31%</em></div><div><span>Price</span><b style="width:61%"></b><em>24%</em></div><div><span>Don't need it</span><b style="width:47%"></b><em>18%</em></div><div><span>Think about it</span><b style="width:36%"></b><em>14%</em></div></div></div>
+      <div class="panel"><h2>Rep coaching leaderboard</h2><div class="leader"><span>1</span><b>Alex M.</b><strong>94</strong></div><div class="leader"><span>2</span><b>Jordan R.</b><strong>91</strong></div><div class="leader"><span>3</span><b>Demo Rep</b><strong>84</strong></div><div class="leader"><span>4</span><b>Taylor S.</b><strong>79</strong></div></div></div>
+    </section>
+
+    <section id="billing" class="view">
+      <div class="billing-head"><p class="eyebrow">SIMPLE PRICING</p><h1>Pick the plan that fits your team.</h1><p>V2 is structured for Stripe Checkout subscriptions when you connect your billing account.</p></div>
+      <div class="plans">
+        <div class="plan"><small>INDIVIDUAL</small><h2>$19<span>/mo</span></h2><p>For one rep.</p><ul><li>Unlimited coaching</li><li>Conversation history</li><li>Core objection library</li></ul><button class="outline" data-plan="Individual">Start trial</button></div>
+        <div class="plan featured"><div class="popular">MOST POPULAR</div><small>PRO</small><h2>$39<span>/mo</span></h2><p>For serious reps.</p><ul><li>Everything in Individual</li><li>Advanced analytics</li><li>Custom playbooks</li></ul><button class="primary" data-plan="Pro">Start trial</button></div>
+        <div class="plan"><small>TEAM</small><h2>$499<span>/mo</span></h2><p>Up to 25 reps.</p><ul><li>Manager dashboard</li><li>Team analytics</li><li>Coaching reports</li></ul><button class="outline" data-plan="Team">Start trial</button></div>
+      </div>
+      <div id="billingMsg" class="billing-msg hidden"></div>
+    </section>
+  </main>
+  <div id="toast"></div>
+</div>
+<script src="app.js"></script>
+</body></html>
