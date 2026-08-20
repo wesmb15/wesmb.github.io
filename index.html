@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CloseCoach AI — Sales Coach MVP</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">C</span> CloseCoach <span class="ai">AI</span></div>
+    <div class="tag">Sales coaching for real conversations</div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">MVP • Wireless & Home Internet</p>
+        <h1>What should you say <span>next?</span></h1>
+        <p class="sub">Paste the customer's objection. CloseCoach turns it into a discovery question, response, transition, and next move.</p>
+      </div>
+      <div class="score-card">
+        <div class="score-label">Today's coaching</div>
+        <div class="score">84<span>/100</span></div>
+        <div class="score-note">Strong discovery</div>
+      </div>
+    </section>
+
+    <section class="coach-grid">
+      <div class="panel input-panel">
+        <div class="panel-head">
+          <div><span class="step">1</span><h2>Customer said</h2></div>
+          <button id="exampleBtn" class="ghost">Try an example</button>
+        </div>
+        <textarea id="objection" placeholder='Example: "I already have internet and I'm happy with it."'></textarea>
+        <div class="chips">
+          <button class="chip" data-text="I already have internet and I'm happy with it.">Already have internet</button>
+          <button class="chip" data-text="Your price is too high.">Too expensive</button>
+          <button class="chip" data-text="I need to think about it.">Need to think</button>
+          <button class="chip" data-text="I don't need another bill.">Don't need it</button>
+        </div>
+        <button id="coachBtn" class="primary">Coach me <span>→</span></button>
+        <p class="disclaimer">MVP uses a local coaching engine. Connect an AI API for production responses.</p>
+      </div>
+
+      <div class="panel result-panel" id="results">
+        <div class="empty-state" id="empty">
+          <div class="spark">✦</div>
+          <h2>Your coaching appears here</h2>
+          <p>Enter an objection and get the next best move.</p>
+        </div>
+
+        <div id="coaching" class="hidden">
+          <div class="result-top">
+            <div>
+              <span class="step">2</span><span class="result-kicker">AI COACHING</span>
+              <h2 id="objectionTitle"></h2>
+            </div>
+            <div class="opportunity" id="opportunity">Opportunity</div>
+          </div>
+
+          <div class="answer-card best">
+            <div class="card-label">BEST NEXT QUESTION</div>
+            <div class="quote" id="bestQuestion"></div>
+            <button class="copy" data-copy="bestQuestion">Copy</button>
+          </div>
+
+          <div class="two-col">
+            <div class="answer-card">
+              <div class="card-label">WHY IT WORKS</div>
+              <p id="why"></p>
+            </div>
+            <div class="answer-card">
+              <div class="card-label">BUYING SIGNAL</div>
+              <p id="signal"></p>
+            </div>
+          </div>
+
+          <div class="answer-card">
+            <div class="card-label">IF THEY ENGAGE</div>
+            <div class="quote" id="transition"></div>
+            <button class="copy" data-copy="transition">Copy</button>
+          </div>
+
+          <div class="answer-card">
+            <div class="card-label">IF THEY PUSH BACK AGAIN</div>
+            <div class="quote" id="pushback"></div>
+            <button class="copy" data-copy="pushback">Copy</button>
+          </div>
+
+          <div class="next-move">
+            <div><span class="step">3</span><strong>Next objective</strong></div>
+            <span id="objective"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="library">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">OBJECTION LIBRARY</p>
+          <h2>Build your team's playbook</h2>
+        </div>
+        <span id="libraryCount">4 common objections</span>
+      </div>
+      <div class="library-grid">
+        <button class="library-card" data-text="I already have internet and I'm happy with it."><strong>Already have internet</strong><span>Discovery → pain → comparison</span></button>
+        <button class="library-card" data-text="Your price is too high."><strong>Too expensive</strong><span>Quantify price → value → compare</span></button>
+        <button class="library-card" data-text="I need to think about it."><strong>Need to think</strong><span>Find the real concern</span></button>
+        <button class="library-card" data-text="I don't need another bill."><strong>Don't need it</strong><span>Explore current setup</span></button>
+      </div>
+    </section>
+  </main>
+
+  <footer>CloseCoach AI • MVP prototype • Built for testing sales conversations</footer>
+  <script src="app.js"></script>
+</body>
+</html>
